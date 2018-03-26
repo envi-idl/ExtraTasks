@@ -1,0 +1,26 @@
+{
+    "name": "ExtractNameFromRaster",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "extractnamefromraster",
+    "display_name": "Extract Name from Raster",
+    "description": "Extracts the name property of a raster.",
+    "schema": "envitask_3.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "Input Raster",
+            "type": "ENVIRaster",
+            "direction": "input",
+            "required": false,
+            "description": "Specify the input raster."
+        },
+		{
+            "name": "OUTPUT_STRING",
+            "display_name": "Output String",
+            "type": "String",
+            "direction": "output",
+            "required": true,
+            "description": "This is the output string containing the name of the raster corrected for valid filename."
+        }     
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "name": "XTRGBtoHLSRaster",
+    "base_class": "ENVITaskFromDOIT",
+    "routine": "RGB_TRANS_DOIT",
+    "display_name": "XT RGB to HLS Raster",
+    "description": "This task creates a raster that has been transformed from a red/green/blue (RGB) to hue/lightness/saturation (HLS) color space.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "keyword": "FID",
+            "display_name": "Input Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a 3-band raster on which to perform the conversion."
+        },
+        {
+            "name": "HSV",
+            "display_name": "HSV",
+            "type": "Boolean",
+            "direction": "INPUT",
+			"hidden": true,
+            "required": true,
+            "description": "Set this keyword to 0 to transform to HLS.",
+            "default": false
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path of the associated OUTPUT_RASTER. If you do not specify this property, or set it to an exclamation symbol (!), a temporary file will be created.",
+            "auto_extension": ".dat",
+            "fold_case": true,
+            "is_temporary": true
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output raster of filetype ENVI.",
+            "uri_param": "OUTPUT_RASTER_URI"
+        }
+    ]
+}

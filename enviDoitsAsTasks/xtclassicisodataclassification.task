@@ -1,0 +1,149 @@
+{
+    "name": "XTClassicISODATAClassification",
+    "base_class": "ENVITaskFromDOIT",
+    "routine": "CLASS_DOIT",
+    "display_name": "XT Classic ISODATA Classification",
+    "description": "This task performs ISODATA Classification using ENVI Classic.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "keyword": "FID",
+            "display_name": "Input Raster",
+            "type": "ENVIRASTER",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a raster on which to perform the classification."
+        },
+        {
+            "name": "MINIMUM_CLASSES",
+            "keyword": "MIN_CLASSES",
+            "display_name": "Minimum Number of Classes",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the minimum number of classes to generate.",
+            "default": 5
+        },
+        {
+            "name": "MAXIMUM_CLASSES",
+            "keyword": "NUM_CLASSES",
+            "display_name": "Maximum Number of Classes",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the maximum number of classes to generate.",
+            "default": 10
+        },
+        {
+            "name": "ITERATIONS",
+            "display_name": "Iterations",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "The maximum iterations to perform.",
+            "default": 1
+        },
+        {
+            "name": "CHANGE_THRESHOLD_PERCENT",
+            "keyword": "CHANGE_THRESH",
+            "display_name": "Change Threshold Percent",
+            "type": "FLOAT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a floating-point number between 0.0 and 1.0 to specify the percentage of pixels that can change classes during each iteration. If this value is greater than the CHANGE_THRESH value, another iteration is performed, provided that it does not exceed the maximum number of iterations. If the percentage is less then the threshold, the classification is complete. A value of 1.0 means 100%.",
+            "default": 0.05
+        },
+        {
+            "name": "MIN_PIXELS_CLASS",
+            "keyword": "ISO_MIN_PIXELS",
+            "display_name": "Minimum Number of Pixels",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the minimum number of pixels needed to form a class.",
+            "default": 1
+        },
+        {
+            "name": "SPLIT_STD",
+            "keyword": "ISO_SPLIT_STD",
+            "display_name": "Standard Deviation Split Value",
+            "type": "FLOAT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a floating-point number greater than 0.0 that indicates the minimum class standard deviation value (in DN). If a class standard deviation is greater than ISO_SPLIT_STD, the class is split into two classes.",
+            "default": 1.0
+        },
+        {
+            "name": "MIN_CLASS_DISTANCE",
+            "keyword": "ISO_MERGE_DIST",
+            "display_name": "Minimum Class Distance",
+            "type": "FLOAT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a floating-point number greater than 0.0 that indicates the class merge distance (in DN). If the distance between class means is less than this value, the classes will be merged.",
+            "default": 5.0
+        },
+        {
+            "name": "MAX_MERGE_PAIRS",
+            "keyword": "ISO_MERGE_PAIRS",
+            "display_name": "Maximum Merge Pairs",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify the maximum number of classes that can be merged in a single iteration.",
+            "default": 2
+        },
+        {
+            "name": "MAXIMUM_STDEV_FROM_MEAN",
+            "keyword": "STD_MULT",
+            "display_name": "Maximum Stdev from Mean",
+            "type": "DOUBLE",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the width around the standard deviation within which the spectrum may fall and still be classified into that class."
+        },
+        {
+            "name": "MAXIMUM_DISTANCE_ERROR",
+            "keyword": "THRESH",
+            "display_name": "Maximum Distance Error",
+            "type": "DOUBLE",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the maximum distance error by which the spectral value can differ from the mean value."
+        },
+        {
+            "name": "METHOD",
+            "display_name": "Method",
+            "type": "UINT",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify the classification algorithm to use.",
+            "hidden": true,
+            "default": 4
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster",
+            "type": "ENVIRASTER",
+            "direction": "OUTPUT",
+            "required": true,
+            "uri_param": "OUTPUT_RASTER_URI",
+            "description": "This is a reference to the output raster of filetype ENVI."
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified path and filename of the output raster.",
+            "fold_case": true,
+            "auto_extension": ".dat",
+            "is_temporary": true
+        }
+    ]
+}

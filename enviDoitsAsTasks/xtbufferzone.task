@@ -1,0 +1,79 @@
+{
+    "name": "XTBufferZone",
+    "base_class": "ENVITaskFromDOIT",
+    "routine": "envi_buffer_zone_doit",
+    "display_name": "XT Buffer Zone",
+    "description": "This task creates a buffer zone image from a classification image. Each pixel in the output image is the nearest distance, in pixels, from any classified pixel specified by CLASS_PTR.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "keyword": "FID",
+            "display_name": "Input Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a classification raster."
+        },
+        {
+            "name": "CLASS_VALUES",
+            "keyword": "CLASS_PTR",
+			"display_name": "Class Values",			
+            "type": "UIntArray",
+			"dimensions": "[*]",
+            "direction": "INPUT",
+			"required": true,
+            "description": "Specify the classes around which to compute the buffer zone."
+        },
+		{
+            "name": "OUTPUT_DATA_TYPE",
+            "keyword": "DISTANCE_DT",
+			"display_name": "Output Data Type",			
+            "type": "String",			
+            "direction": "INPUT",
+			"required": true,
+            "description": "Specify the output data type.",
+			"choice_list": {
+                "Integer": 0,
+                "Floating Point": 1
+            },
+            "fold_case": true,
+			"default": "Integer"
+        },
+		{
+            "name": "MAXIMUM_DISTANCE",
+			"keyword": "MAX_DISTANCE",
+            "display_name": "Maximum Distance",
+            "type": "ULong",
+            "direction": "INPUT",
+            "required": true,
+            "description": "specify a long integer representing the maximum distance (in pixels) for the buffer zone.",
+            "inclusive_min": false,
+            "min": 0.0,
+			"default": 10000.0
+        },
+        {
+            "name": "OUTPUT_RASTER_URI",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path of the associated OUTPUT_RASTER. If you do not specify this property, or set it to an exclamation symbol (!), a temporary file will be created.",
+            "auto_extension": ".dat",
+            "fold_case": true,
+            "is_temporary": true
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "keyword": "OUT_NAME",
+            "display_name": "Output Raster",
+            "type": "ENVIRaster",
+            "direction": "OUTPUT",
+            "required": true,
+            "description": "This is a reference to the output raster of filetype ENVI.",
+            "uri_param": "OUTPUT_RASTER_URI"
+        }
+    ]
+}
