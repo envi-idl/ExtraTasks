@@ -1,8 +1,8 @@
 {
-    "name": "ExtractNameFromRaster",
+    "name": "XTExtractNameFromRaster",
     "base_class": "ENVITaskFromProcedure",
-    "routine": "extractnamefromraster",
-    "display_name": "Extract Name from Raster",
+    "routine": "xtExtractNameFromRaster",
+    "display_name": "XT Extract Name from Raster",
     "description": "Extracts the name property of a raster.",
     "schema": "envitask_3.0",
     "parameters": [

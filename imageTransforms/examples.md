@@ -1,6 +1,28 @@
 # Image Transforms
 
-Here are some example code snippets for how to run these tasks from IDL. This assumes that you have not placed the tasks in ENVI's custom code folder. For the proper way to install the tasks, see [https://github.com/envi-idl/TaskAndExtensionInstallGuide](https://github.com/envi-idl/TaskAndExtensionInstallGuide).
+A collection of tasks that wrap ENVI doits for color space tranforms. See below for more details and examples for how to run each task.
+
+These examples assume that you have not placed the tasks in ENVI's custom code folder and are running from IDL with this repository added to IDL's search path. For the proper way to install the tasks, see [https://github.com/envi-idl/TaskAndExtensionInstallGuide](https://github.com/envi-idl/TaskAndExtensionInstallGuide).
+
+For specific details about all task parameters for the tasks listed below, view the associated **.task** file in this folder.
+
+## Processing Requirements
+
+In order to perform a correct, forward color transform on the data (to HLS or HSV spaces), the input raster **must** have data values between 0 and 255. To accomplish this, with IDL you can use of the stretch rasters listed below which also provide links to the documentation. In the examples, the `ENVILinearPercentStretchRaster` is what is used.
+
+- [ENVIEqualizationStretchRaster](http://www.harrisgeospatial.com/docs/enviequalizationstretchraster.html)
+
+- [ENVIGaussianStretchRaster](http://www.harrisgeospatial.com/docs/envigaussianstretchraster.html)
+
+- [ENVILinearPercentStretchRaster](http://www.harrisgeospatial.com/docs/envilinearpercentstretchraster.html)
+
+- [ENVILinearRangeStretchRaster](http://www.harrisgeospatial.com/docs/envilinearrangestretchraster.html)
+
+- [ENVILogStretchRaster](http://www.harrisgeospatial.com/docs/envilogstretchraster.html)
+
+- [ENVIOptimizedLinearStretchRaster](http://www.harrisgeospatial.com/docs/envioptimizedlinearstretchraster.html)
+
+- [ENVIRootStretchRaster](http://www.harrisgeospatial.com/docs/envirootstretchraster.html)
 
 
 ## XTRGBtoHLSRaster
@@ -22,16 +44,13 @@ Raster = e.OpenRaster(File)
 ; Process a spectral subset
 Subset = ENVISubsetRaster(Raster, BANDS = [0,1,2])
 
+; Stretch our data so that we are in 0-255 RGB space
+Stretched = ENVILinearPercentStretchRaster(subset)
+
 ; Get the  task from the catalog of ENVITasks
 Task = ENVITask('XTRGBtoHLSRaster')
-
-; Define inputs
-Task.INPUT_RASTER = Subset
-
-; Define outputs
+Task.INPUT_RASTER = Stretched
 Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename()
-
-; Run the task
 Task.Execute
 
 ; Get the collection of data objects currently available in the Data Manager
@@ -65,16 +84,13 @@ Raster = e.OpenRaster(File)
 ; Process a spectral subset
 Subset = ENVISubsetRaster(Raster, BANDS = [0,1,2])
 
+; Stretch our data so that we are in 0-255 RGB space
+Stretched = ENVILinearPercentStretchRaster(subset)
+
 ; Get the  task from the catalog of ENVITasks
 Task = ENVITask('XTRGBtoHSVRaster')
-
-; Define inputs
-Task.INPUT_RASTER = Subset
-
-; Define outputs
+Task.INPUT_RASTER = Stretched
 Task.OUTPUT_RASTER_URI = e.GetTemporaryFilename()
-
-; Run the task
 Task.Execute
 
 ; Get the collection of data objects currently available in the Data Manager
@@ -105,17 +121,20 @@ File = Filepath('qb_boulder_msi', Subdir=['data'], $
   Root_Dir=e.Root_Dir)
 Raster = e.OpenRaster(File)
 
-; Process a spectral subset
+; Process a spectral subset (three bands)
 Subset = ENVISubsetRaster(Raster, BANDS = [0,1,2])
+
+; Stretch our data so that we are in 0-255 RGB space
+stretched = ENVILinearPercentStretchRaster(subset)
 
 ; Generate an HLS raster
 forwardTask = ENVITask('XTRGBtoHLSRaster')
-forwardTask.INPUT_RASTER = Subset
+forwardTask.INPUT_RASTER = stretched
 forwardTask.Execute
 
 ; Convert back to RGB
 inverseTask = ENVITask('XTHLStoRGBRaster')
-inverseTask.INPUT_RASTER = Task.OUTPUT_RASTER
+inverseTask.INPUT_RASTER = forwardTask.OUTPUT_RASTER
 inverseTask.Execute
 
 ; Get the collection of data objects currently available in the Data Manager
@@ -129,7 +148,7 @@ DataColl.Add, inverseTask.OUTPUT_RASTER
 View1 = e.GetView()
 Layer1 = View1.CreateLayer(Subset)
 Layer2 = View1.CreateLayer(forwardTask.OUTPUT_RASTER)
-Layer3 = View1.CreateLayer(inverseTask.OUTPUT_RASTER)
+Layer3 = View1.CreateLayer(inverseTask.OUTPUT_RASTER, BANDS = [2,1,0])
 ```
 
 ## XTHSVtoRGBRaster
@@ -148,17 +167,20 @@ File = Filepath('qb_boulder_msi', Subdir=['data'], $
   Root_Dir=e.Root_Dir)
 Raster = e.OpenRaster(File)
 
-; Process a spectral subset
+; Process a spectral subset (three bands)
 Subset = ENVISubsetRaster(Raster, BANDS = [0,1,2])
+
+; Stretch our data so that we are in 0-255 RGB space
+stretched = ENVILinearPercentStretchRaster(subset)
 
 ; Generate an HLS raster
 forwardTask = ENVITask('XTRGBtoHSVRaster')
-forwardTask.INPUT_RASTER = Subset
+forwardTask.INPUT_RASTER = stretched
 forwardTask.Execute
 
 ; Convert back to RGB
 inverseTask = ENVITask('XTHSVtoRGBRaster')
-inverseTask.INPUT_RASTER = Task.OUTPUT_RASTER
+inverseTask.INPUT_RASTER = forwardTask.OUTPUT_RASTER
 inverseTask.Execute
 
 ; Get the collection of data objects currently available in the Data Manager
@@ -172,5 +194,5 @@ DataColl.Add, inverseTask.OUTPUT_RASTER
 View1 = e.GetView()
 Layer1 = View1.CreateLayer(Subset)
 Layer2 = View1.CreateLayer(forwardTask.OUTPUT_RASTER)
-Layer3 = View1.CreateLayer(inverseTask.OUTPUT_RASTER)
+Layer3 = View1.CreateLayer(inverseTask.OUTPUT_RASTER, BANDS = [2,1,0])
 ```

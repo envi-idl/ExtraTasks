@@ -42,8 +42,8 @@
             "type": "UINT",
             "direction": "INPUT",
             "required": true,
-            "description": "The maximum iterations to perform.",
-            "default": 1
+            "description": "The maximum number of iterations to perform.",
+            "default": 10
         },
         {
             "name": "CHANGE_THRESHOLD_PERCENT",
@@ -66,7 +66,7 @@
             "default": 1
         },
         {
-            "name": "SPLIT_STD",
+            "name": "STDEV_SPLIT",
             "keyword": "ISO_SPLIT_STD",
             "display_name": "Standard Deviation Split Value",
             "type": "FLOAT",

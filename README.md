@@ -27,20 +27,22 @@ Here is a summary (by directory) of what tasks are avaiable. To access
 
 ### enviDoitsAsTasks
 
-See [./imageTransforms/examples.md](./imageTransforms/examples.md) for examples running each task from IDL
+**NOTE: These require ENVI 5.5 or newer to run**
+
+See [./enviDoitsAsTasks/examples.md](./enviDoitsAsTasks/examples.md) for examples running each task from IDL
 
 This folder contains ENVI doits that have been wrapped as tasks. Here are the tasks:
 
-- XTBufferZoneTask: This task wraps the ENVI Classic buffer zone doit.
+- XTBufferZoneTask: This task wraps the ENVI Classic buffer zone doit, which generates an image where the pixel values represent the pixel distance to the closest pixel of a specified class of a classification image.
 
-- XTClassicISODATAClassification: This task wraps the ENVI Classic version of ISODATAClassification which has some different parameters compared to the newer ISODATAClassificaton tasks.
+- XTClassicISODATAClassification: This task wraps the ENVI Classic version of ISODATAClassification which has some different parameters compared to the newer ISODATAClassificaton task.
 
 
 ### Image Transforms
 
 **NOTE: These require ENVI 5.5 or newer to run**
 
-See [./imageTransforms/examples.md](./imageTransforms/examples.md) for examples running each task from IDL
+See [./imageTransforms/examples.md](./imageTransforms/examples.md) for examples running each task from IDL.
 
 Several ENVI Tasks that wrap the ENVI doits for converting between color spaces. Here are the tasks:
 
@@ -51,6 +53,15 @@ Several ENVI Tasks that wrap the ENVI doits for converting between color spaces.
 - XTRGBtoHLSRaster: This tasks wraps the ENVI Classic `rgb_trans_doit` and converts an image from red/green/blue (RGB) to hue/lightness/saturation (HLS).
 
 - XTRGBtoHSVRaster: This tasks wraps the ENVI Classic `rgb_trans_doit` and converts an image from red/green/blue (RGB) to hue/lightness/saturation (HLS).
+
+
+## Other
+
+**NOTE: These require ENVI 5.5 or newer to run**
+
+See [./other/examples.md](./other/examples.md) for examples running each task from IDL.
+
+- XTExtractNameFromRaster: Simple procedure that returns the name of a raster with special characters removed so that you could write a new file to disk. The special characters that get removed are ones that are not allowed in filepaths on computers and can appear in some use cases. 
 
 
 ## License

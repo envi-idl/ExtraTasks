@@ -3,7 +3,7 @@
     "base_class": "ENVITaskFromDOIT",
     "routine": "envi_buffer_zone_doit",
     "display_name": "XT Buffer Zone",
-    "description": "This task creates a buffer zone image from a classification image. Each pixel in the output image is the nearest distance, in pixels, from any classified pixel specified by CLASS_PTR.",
+    "description": "This task creates a buffer zone image from a classification image. Each pixel in the output image is the nearest distance, in pixels, from any classified pixel specified by CLASS_VALUES.",
     "schema": "envitask_3.2",
     "revision": "1.0.0",
     "parameters": [
@@ -19,39 +19,39 @@
         {
             "name": "CLASS_VALUES",
             "keyword": "CLASS_PTR",
-			"display_name": "Class Values",			
+            "display_name": "Class Values",
             "type": "UIntArray",
-			"dimensions": "[*]",
+            "dimensions": "[*]",
             "direction": "INPUT",
-			"required": true,
+            "required": true,
             "description": "Specify the classes around which to compute the buffer zone."
         },
-		{
+        {
             "name": "OUTPUT_DATA_TYPE",
             "keyword": "DISTANCE_DT",
-			"display_name": "Output Data Type",			
-            "type": "String",			
+            "display_name": "Output Data Type",
+            "type": "String",
             "direction": "INPUT",
-			"required": true,
+            "required": true,
             "description": "Specify the output data type.",
-			"choice_list": {
+            "choice_list": {
                 "Integer": 0,
                 "Floating Point": 1
             },
             "fold_case": true,
-			"default": "Integer"
+            "default": "Integer"
         },
-		{
+        {
             "name": "MAXIMUM_DISTANCE",
-			"keyword": "MAX_DISTANCE",
+            "keyword": "MAX_DISTANCE",
             "display_name": "Maximum Distance",
             "type": "ULong",
             "direction": "INPUT",
             "required": true,
-            "description": "specify a long integer representing the maximum distance (in pixels) for the buffer zone.",
+            "description": "Specify a long integer representing the maximum distance (in pixels) for the buffer zone.",
             "inclusive_min": false,
             "min": 0.0,
-			"default": 10000.0
+            "default": 10000.0
         },
         {
             "name": "OUTPUT_RASTER_URI",
