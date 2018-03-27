@@ -1,5 +1,5 @@
 ;h+
-; (c) 2018 Harris Geospatial Solutions, Inc.
+; Copyright (c) 2017, Harris Geospatial Solutions, Inc.
 ;h-
 
 ;+

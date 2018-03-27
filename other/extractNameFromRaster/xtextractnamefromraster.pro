@@ -1,3 +1,6 @@
+;h+
+; Copyright (c) 2017, Harris Geospatial Solutions, Inc.
+;h-
 ;+
 ; :Description:
 ;    Simple procedure that returns the name of a raster with
