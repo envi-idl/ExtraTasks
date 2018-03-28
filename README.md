@@ -68,4 +68,4 @@ See [./other/examples.md](./other/examples.md) for examples running each task fr
 
 Licensed under MIT. See LICENSE.txt for additional details and information.
 
-Copyright (c) 2017, Harris Geospatial Solutions, Inc.
+Copyright (c) 2018, Harris Geospatial Solutions, Inc.
