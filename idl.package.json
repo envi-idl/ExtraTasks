@@ -1,5 +1,5 @@
 {
-    "name": "Custom IDL Package",
+    "name": "CustomIDLPackage",
     "version": "1.0",
     "license": "",
     "author": "IDL Package Creator",
@@ -12,5 +12,6 @@
         "docs"
     ],
     "dependencies": {
-    }
+    },
+    "entry_point": ""
 }

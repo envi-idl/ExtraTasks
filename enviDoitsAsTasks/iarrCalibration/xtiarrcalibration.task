@@ -1,0 +1,26 @@
+{
+    "name": "XTIARRCalibration",
+    "version": "5.3",
+    "baseClass": "ENVITaskFromProcedure",
+    "routine": "xtiarrcalibration",
+    "displayName": "XT IARR Calibration",
+    "description": "this task wraps the ENVI doit for performing IARR Calibration. Please see the documentation for more details.",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "displayName": "Input Raster",
+            "description": "Default parameter description from the IDL Package Manager.",
+            "direction": "input",
+            "parameterType": "required",
+            "dataType": "ENVIRaster"
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "displayName": "Output Raster",
+            "description": "A reference to the IARR Calibrated image.",
+            "direction": "output",
+            "parameterType": "required",
+            "dataType": "ENVIRaster"
+        }
+    ]
+}

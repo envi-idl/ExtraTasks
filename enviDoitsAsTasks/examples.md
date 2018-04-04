@@ -103,13 +103,51 @@ File = Filepath('qb_boulder_msi', Subdir=['data'], $
   Root_Dir=e.Root_Dir)
 Raster = e.OpenRaster(File)
 
-; run ENVI Classif ISODATAClassification
+; run ENVI Classic ISODATAClassification
 Task = ENVITask('XTClassicISODATAClassification')
 Task.INPUT_RASTER = Raster
 Task.MINIMUM_CLASSES = 5
 Task.MAXIMUM_CLASSES = 10
 Task.STDEV_SPLIT = 0.5
 Task.ITERATIONS = 5
+Task.execute
+
+; Get the collection of data objects currently available in the Data Manager
+DataColl = e.Data
+
+; Add the output to the Data Manager
+DataColl.Add, Task.OUTPUT_RASTER
+
+; Display the result
+View1 = e.GetView()
+Layer1 = View1.CreateLayer(Raster)
+Layer2 = View1.CreateLayer(Task.OUTPUT_RASTER)
+```
+
+
+## XTIARRCalibration
+
+This task performs IARR Calibration on an input image. Please see the ENVI documentation for more on data calibration and why this is an important step of the process for image analysis. Here is a link:
+
+[http://www.harrisgeospatial.com/docs/AtmosphericCorrection.html#IAR](http://www.harrisgeospatial.com/docs/AtmosphericCorrection.html#IAR)
+
+Here is an example that shows how to run the task from IDL:
+
+```idl
+; Start the application
+e = ENVI()
+
+; Load our extra tasks
+xtTasksInit
+
+; Open an input file
+File = Filepath('qb_boulder_msi', Subdir=['data'], $
+  Root_Dir=e.Root_Dir)
+Raster = e.OpenRaster(File)
+
+; run ENVI Classif ISODATAClassification
+Task = ENVITask('XTIARRcalibration')
+Task.INPUT_RASTER = Raster
 Task.execute
 
 ; Get the collection of data objects currently available in the Data Manager
