@@ -1,0 +1,28 @@
+{
+    "name": "xtCreateRasterPyramid",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "xtCreateRasterPyramid",
+    "display_name": "XT Create Raster Pyramid",
+    "description": "This task creates a pyramid file for an input raster.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "INPUT_RASTER",
+            "display_name": "Input Raster",
+            "type": "ENVIRaster",
+            "direction": "INPUT",
+            "required": true,
+            "description": "Specify a raster."
+        },
+		{
+            "name": "INCLUDE_FULL_RESOLUTION",
+            "display_name": "Include Full Resolution",
+            "type": "Boolean",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Set this keyword to include the full-resolution zoom level in the pyramid. This will improve visualization performance. Setting this keyword to 0 will save disk space.",            
+            "default": false
+        }
+    ]
+}

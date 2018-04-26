@@ -1,0 +1,92 @@
+{
+    "name": "xtSaveROITrainingStatistics",
+    "base_class": "ENVITaskFromProcedure",
+    "routine": "xtSaveROITrainingStatistics",
+    "display_name": "XT Save ROI Training Statistics",
+    "description": "This task saves the ROI Training Statistics resulting from a 'ROI Training Classification Statistics' task.",
+    "schema": "envitask_3.2",
+    "revision": "1.0.0",
+    "parameters": [
+        {
+            "name": "MIN",
+            "display_name": "Minimum",
+            "type": "DoubleArray",
+            "dimensions": "[*, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the minimum data value, returned as an array [number of bands, number of ROIs]."
+        },
+        {
+            "name": "MAX",
+            "display_name": "Maximum",
+            "type": "DoubleArray",
+            "dimensions": "[*, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the maximum data value, returned as an array [number of bands, number of ROIs]."
+        },
+        {
+            "name": "MEAN",
+            "display_name": "Mean",
+            "type": "DoubleArray",
+            "dimensions": "[*, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the mean data value, returned as an array [number of bands, number of ROIs]."
+        },
+        {
+            "name": "STDDEV",
+            "display_name": "Standard Deviation",
+            "type": "DoubleArray",
+            "dimensions": "[*, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the standard deviation, returned as an array [number of bands, number of ROIs]."
+        },
+        {
+            "name": "COVARIANCE",
+            "display_name": "Covariance",
+            "type": "DoubleArray",
+            "dimensions": "[*, *, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the covariance matrix, returned an array [number of bands, number of bands, number of ROIs]."
+        },
+        {
+            "name": "ROI_PIXEL_COUNT",
+            "display_name": "Pixel Count",
+            "type": "LongArray",
+            "dimensions": "[*]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is the number of pixels for each ROI, returned as an array [number of ROIs]."
+        },
+        {
+            "name": "ROI_COLORS",
+            "display_name": "ROI Colors",
+            "type": "ByteArray",
+            "dimensions": "[3, *]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is an array of RGB triplets representing the ROI colors as defined by the ENVIROIs."
+        },
+        {
+            "name": "ROI_NAMES",
+            "display_name": "ROI Names",
+            "type": "StringArray",
+            "dimensions": "[*]",
+            "direction": "INPUT",
+            "required": false,
+            "description": "This is an array of ROI names as defined by the input ENVIROIs.",
+            "fold_case": true
+        },
+		{
+            "name": "OUTPUT_URI",
+            "display_name": "Output File URI",
+            "type": "ENVIURI",
+            "direction": "INPUT",
+            "required": false,
+            "description": "Specify a string with the fully qualified filename and path of the file where the statistics will be saved."
+        }
+    ]
+}

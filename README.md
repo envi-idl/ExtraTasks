@@ -37,6 +37,7 @@ This folder contains ENVI doits that have been wrapped as tasks. Here are the ta
 
 - XTClassicISODATAClassification: This task wraps the ENVI Classic version of ISODATAClassification which has some different parameters compared to the newer ISODATAClassificaton task.
 
+- XTIARRCalibration: This task performs IARR Calibration on an input image. Please see the ENVI documentation for more on data calibration and why this is an important step of the process for image analysis. Here is a link:
 
 ### Image Transforms
 
@@ -61,8 +62,13 @@ Several ENVI Tasks that wrap the ENVI doits for converting between color spaces.
 
 See [./other/examples.md](./other/examples.md) for examples running each task from IDL.
 
-- XTExtractNameFromRaster: Simple procedure that returns the name of a raster with special characters removed so that you could write a new file to disk. The special characters that get removed are ones that are not allowed in filepaths on computers and can appear in some use cases. 
+- XTExtractNameFromRaster: Simple procedure that returns the name of a raster with special characters removed so that you could write a new file to disk. The special characters that get removed are ones that are not allowed in filepaths on computers and can appear in some use cases.
 
+- XTSaveROITrainingStatistics: This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.
+
+- XTRestoreROITrainingStatistics: This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.
+
+- XTCreateRasterPyramid: This will create a Pyramid file for a raster.
 
 ## License
 
