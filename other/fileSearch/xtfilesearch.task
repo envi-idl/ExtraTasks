@@ -1,0 +1,60 @@
+{
+    "name": "XTFileSearch",
+    "version": "5.3",
+    "baseClass": "ENVITaskFromProcedure",
+    "routine": "xtfilesearch",
+    "displayName": "XT File Search",
+    "description": "Custom task definition created by the IDL Package Builder",
+    "parameters": [
+        {
+            "name": "DIRECTORY",
+            "displayName": "Directory",
+            "description": "Specify the folder you want to search for files.",
+            "direction": "input",
+            "parameterType": "required",
+            "hidden": false,
+            "dataType": "string"
+        },
+        {
+            "name": "SEARCH_PATTERN",
+            "displayName": "Search Pattern",
+            "description": "Specify the patter for searching for files. Wildcards are accepted as asterisks in the string (i.e. '*').",
+            "direction": "input",
+            "parameterType": "required",
+            "dataType": "string"
+        },
+        {
+            "name": "EXCLUDE_EXTENSIONS",
+            "displayName": "Exclude Extensions",
+            "description": "Specify file extensions that you want to exclude from the search results. Any file that has this extension will be excluded from the results.",
+            "direction": "input",
+            "parameterType": "optional",
+            "dataType": "string[*]"
+        },
+        {
+            "name": "RECURSIVE",
+            "displayName": "Recursive",
+            "description": "If set, then the folder will be recursively searched for files. Otherwise, only the files directly in the folder will be searched for.",
+            "direction": "input",
+            "parameterType": "optional",
+            "dataType": "boolean",
+            "defaultValue": true
+        },
+        {
+            "name": "COUNT",
+            "displayName": "Count",
+            "description": "Returns the total number of files found.",
+            "direction": "output",
+            "parameterType": "required",
+            "dataType": "long"
+        },
+        {
+            "name": "OUTPUT_FILES",
+            "displayName": "Output Files",
+            "description": "Contains an array of all the output files from the task.",
+            "direction": "output",
+            "parameterType": "required",
+            "dataType": "string[*]"
+        }
+    ]
+}

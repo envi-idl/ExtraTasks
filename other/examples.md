@@ -101,6 +101,32 @@ Task.Execute
 print, outFile
 ```
 
+## XTFileSearch
+
+This task searches a folder for files for easy processing in ENVI for the ENVI Modeler. It will throw an error if no files are found.
+
+```idl
+; Start the application
+e = ENVI()
+
+; Load our extra tasks
+xtTasksInit
+
+; Search for files while excluding specific file extensions
+Task = ENVITask('XTSaveROITrainingStatistics')
+Task.DIRECTORY = 'C:\some\folder'
+Task.SEARCH_PATTERN = '*.dat'
+Task.EXCLUDE_EXTENSIONS = '.dat.enp'
+Task.execute
+
+; Get the files
+print, Task.OUTPUT_FILES
+
+; Get the number of files
+print, Task.COUNT
+
+```
+
 ## XTRestoreROITrainingStatistics
 
 This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.

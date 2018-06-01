@@ -1,0 +1,17 @@
+{
+    "name": "ExtraTasks",
+    "version": "1.0",
+    "license": "MIT",
+    "author": "Harris Geospatial Solutions",
+    "description": "A collection of additional tasks for ENVI that don't belong to other GitHub repositories. These tasks are not constrained to a specific example or use case.",
+    "entry_point": "xttasksinit",
+    "build_types": [
+        "idl"
+    ],
+    "build_ignore": [
+        "dist",
+        "docs"
+    ],
+    "dependencies": {
+    }
+}

@@ -64,11 +64,14 @@ See [./other/examples.md](./other/examples.md) for examples running each task fr
 
 - XTExtractNameFromRaster: Simple procedure that returns the name of a raster with special characters removed so that you could write a new file to disk. The special characters that get removed are ones that are not allowed in filepaths on computers and can appear in some use cases.
 
+- XTCreateRasterPyramid: This will create a Pyramid file for a raster.
+
+- XTFileSearch: This task searches a folder for files for easy processing in ENVI for the ENVI Modeler. It will throw an error if no files are found.
+
 - XTSaveROITrainingStatistics: This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.
 
 - XTRestoreROITrainingStatistics: This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.
 
-- XTCreateRasterPyramid: This will create a Pyramid file for a raster.
 
 ## License
 
