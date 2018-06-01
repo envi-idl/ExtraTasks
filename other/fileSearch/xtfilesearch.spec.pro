@@ -36,6 +36,10 @@ l = luna(CONFIG_FILE = './../../idl.test.json')
 
       (it.expects(1)).toEqual, file_test(taskFile)
 
+    it = s.test('is a valid task file')
+
+      (it.expects(taskFile)).toBeAValidENVITask
+
   ;create a suite
   s = l.suite('Test that we')
   

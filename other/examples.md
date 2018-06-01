@@ -127,6 +127,60 @@ print, Task.COUNT
 
 ```
 
+## XTQUACWithBadBandsList
+
+This task lets you process a file with QUAC (atmospheric correction) that first subsets the data with information on bad bands. For the examples below, you must have the same number of bad band elements as there are bands in the raster that will be processed.
+
+This first example uses an IDL array to specify which bands to process (1) and which bands to ignore (0).
+
+```idl
+;start ENVI
+e = envi(/HEADLESS)
+
+; Open an input file
+File = Filepath('qb_boulder_msi', Subdir=['data'], $
+  Root_Dir=e.Root_Dir)
+Raster = e.OpenRaster(File)
+
+;specify the bad bands array
+bad_bands = [1,1,0,1]
+
+; Process with QUAC
+quacTask = ENVITask('ROIStatistics')
+quacTask.INPUT_BAD_BANDS_ARRAY = bad_bands
+quacTask.INPUT_RASTER = Raster
+quacTask.SENSOR = 'QuickBird'
+quacTask.Execute
+```
+
+This second example uses a text file on disk to specify which bands to process (1) and which bands to ignore (0). The text file contains one number per line and empty lines are ignored.
+
+```idl
+;start ENVI
+e = envi(/HEADLESS)
+
+; Open an input file
+File = Filepath('qb_boulder_msi', Subdir=['data'], $
+  Root_Dir=e.Root_Dir)
+Raster = e.OpenRaster(File)
+
+;specify the bad bands array
+bad_bands = [1,1,0,1]
+
+; create a file for the bad bands list
+bad_bands_uri = e.getTemporaryFilename('.txt')
+openw, lun, bad_bands_uri, /GET_LUN
+printf, lun, strtrim(bad_bands,2), /IMPLIED_PRINT
+free_lun, lun
+
+; Process with QUAC
+quacTask = ENVITask('ROIStatistics')
+quacTask.INPUT_BAD_BANDS_URI = bad_bands_uri
+quacTask.INPUT_RASTER = Raster
+quacTask.SENSOR = 'QuickBird'
+quacTask.Execute
+```
+
 ## XTRestoreROITrainingStatistics
 
 This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.

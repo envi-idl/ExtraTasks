@@ -1,0 +1,75 @@
+{
+    "name": "XTQUACWithBadBandsList",
+    "version": "5.3",
+    "baseClass": "ENVITaskFromProcedure",
+    "routine": "xtquacwithbadbandslist",
+    "displayName": "XT QUAC with Bad Bands List",
+    "description": "A task that performs QUAC (atmospheric correction) on a raster and will remove bad bands from the input before processing.",
+    "parameters": [
+        {
+            "name": "INPUT_BAD_BANDS_ARRAY",
+            "displayName": "Input Bad Bands Array",
+            "description": "Specify an array of 1/0 that represents if a band is to be processed (1) or ignored (0). There must be as many elements as bands in the input raster. If this is not specified, then INPUT_BAD_BANDS_URI must be set.",
+            "direction": "input",
+            "parameterType": "optional",
+            "dataType": "byte[*]"
+        },
+        {
+            "name": "INPUT_BAD_BANDS_URI",
+            "displayName": "Input Bad Bands Uri",
+            "description": "Specify a text file where each line has a value of 1/0 that represents if a band is to be processed (1) or ignored (0). There must be as many elements as bands in the input raster. If this is not specified, then INPUT_BAD_BANDS_ARRAY must be set.",
+            "direction": "input",
+            "parameterType": "optional",
+            "dataType": "ENVIURI"
+        },
+        {
+            "name": "INPUT_RASTER",
+            "displayName": "Input Raster",
+            "description": "Specify the raster to perform QUAC on.",
+            "direction": "input",
+            "parameterType": "required",
+            "dataType": "ENVIRaster"
+        },
+        {
+            "name": "OUTPUT_RASTER",
+            "displayName": "Output Raster",
+            "description": "A reference to the output raster that has had QUAC applied.",
+            "direction": "output",
+            "parameterType": "required",
+            "dataType": "ENVIRaster"
+        },
+        {
+            "name": "SENSOR",
+            "displayName": "Sensor",
+            "description": "Specify one of the strings from the CHOICE_LIST, indicating the sensor type of the input raster. If SENSOR is not set, then the task uses the Generic/Unknown Sensor option to guess the best sensor type, based on the number of input bands and their wavelengths. Select the Highly Vegetated Scenes option if the image is highly vegetated.",
+            "direction": "input",
+            "parameterType": "required",
+            "dataType": "string",
+            "defaultValue": "Generic / Unknown Sensor",
+            "choiceList": [
+                "Generic / Unknown Sensor", 
+                "Highly Vegetated Scenes", 
+                "AISA-ES", 
+                "ALI", 
+                "ASAS", 
+                "AVIRIS", 
+                "CAP ARCHER", 
+                "CASI", 
+                "COMPASS", 
+                "HYCAS", 
+                "HYDICE", 
+                "HyMap", 
+                "Hyperion", 
+                "Landsat TM/ETM/OLI", 
+                "LASH", 
+                "MARS", 
+                "MODIS", 
+                "QuickBird", 
+                "RGB", 
+                "WorldView-2", 
+                "Near Infrared (NIR)", 
+                "Near-Shortwave Infrared (NIR-SWIR)"
+            ]
+        }
+    ]
+}
