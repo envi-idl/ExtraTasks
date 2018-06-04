@@ -62,11 +62,15 @@ Several ENVI Tasks that wrap the ENVI doits for converting between color spaces.
 
 See [./other/examples.md](./other/examples.md) for examples running each task from IDL.
 
+- XTExecuteStatement: This task will execute any valid IDL statement and is intended for use in the ENVI Modeler where you can't execute any IDL command that you want. You will not get results back from running any functions or procedures. The intended use was, but is not limited to, being able to run different IDL procedures that might initialize your environment prior to task processing. Note that this tool **requires** that you have ENVI + IDL started for use.
+
 - XTExtractNameFromRaster: Simple procedure that returns the name of a raster with special characters removed so that you could write a new file to disk. The special characters that get removed are ones that are not allowed in filepaths on computers and can appear in some use cases.
 
 - XTCreateRasterPyramid: This will create a Pyramid file for a raster.
 
 - XTFileSearch: This task searches a folder for files for easy processing in ENVI for the ENVI Modeler. It will throw an error if no files are found.
+
+- XTQUACWithBadBandsList: This task lets you process a file with QUAC (atmospheric correction) that first subsets the data with information on bad bands. For the examples below, you must have the same number of bad band elements as there are bands in the raster that will be processed.
 
 - XTSaveROITrainingStatistics: This task saves statistics that were extracted from a raster over regions of interest so that the information persists between ENVI+IDL sessions.
 

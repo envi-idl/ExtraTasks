@@ -28,6 +28,24 @@ Task.INPUT_RASTER = Raster
 Task.Execute
 ```
 
+## XTExecuteStatement
+
+This task will execute any valid IDL statement and is intended for use in the ENVI Modeler where you can't execute any IDL command that you want. You will not get results back from running any functions or procedures. The intended use was, but is not limited to, being able to run different IDL procedures that might initialize your environment prior to task processing. Note that this tool **requires** that you have ENVI + IDL started for use.
+
+```idl
+; Start the application
+e = ENVI()
+
+; Load our extra tasks
+xtTasksInit
+
+; Get the  task from the catalog of ENVITasks
+Task = ENVITask('XTExecuteStatement')
+Task.STATEMENT = 'print, 5'
+Task.Execute
+```
+
+
 ## XTExtractNameFromRaster
 
 As the task name implies, this tasks extracts the name property from a raster and removes all special characters (those not allowed in filepaths). Here is a short example:

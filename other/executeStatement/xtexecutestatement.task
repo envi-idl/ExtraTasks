@@ -1,0 +1,18 @@
+{
+    "name": "XTExecuteStatement",
+    "version": "5.3",
+    "baseClass": "ENVITaskFromProcedure",
+    "routine": "xtexecutestatement",
+    "displayName": "XT Execute Statement",
+    "description": "This task will execute any valid IDL statement. You will not get results back from running the code. The intended use was, but is not limited to, being able to run different IDL procedures that might initialize your environment prior to task processing. Note that this tool **requires** that you have ENVI + IDL started for use.",
+    "parameters": [
+        {
+            "name": "STATEMENT",
+            "displayName": "Statement",
+            "description": "Specify the IDL statement that you want to execute.",
+            "direction": "input",
+            "parameterType": "required",
+            "dataType": "string"
+        }
+    ]
+}
