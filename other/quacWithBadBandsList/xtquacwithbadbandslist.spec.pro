@@ -46,7 +46,7 @@ l = luna(CONFIG_FILE = './../../idl.test.json')
   ;create a suite
   s = l.suite('Test that our task file')
 
-    ; amke sure the task exist
+    ; make sure the task exist
     it = s.test('exists')
 
       (it.expects(1)).toEqual, file_test(taskFile)
