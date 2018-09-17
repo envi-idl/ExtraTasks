@@ -35,11 +35,11 @@
             "required": true,
             "description": "Specify the output data type.",
             "choice_list": {
-                "Integer": 0,
-                "Floating Point": 1
+                "int": 0,
+                "float": 1
             },
             "fold_case": true,
-            "default": "Integer"
+            "default": "int"
         },
         {
             "name": "MAXIMUM_DISTANCE",
